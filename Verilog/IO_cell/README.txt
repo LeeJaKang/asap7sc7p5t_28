@@ -1,0 +1,1 @@
+Verilog file was written and developed by NanoCAD students (Richard Chen and Jooyeon Jeong) at UCLA by manually.

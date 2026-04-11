@@ -1,0 +1,54 @@
+* SPICE NETLIST
+***************************************
+.SUBCKT ANTENNA_ASAP7_75t_R VSS VDD A
+M0 A 6 A VSS nmos_rvt L=20n W=81.0n nfin=3
+M1 VDD 7 VDD VDD pmos_rvt L=20n W=81.0n nfin=3
+.ENDS
+***************************************
+.SUBCKT DECAPx2_ASAP7_75t_R VSS VDD
+MM2 net011 net012 VSS VSS nmos_rvt w=162.00n l=20n nfin=6
+MM1 net012 net011 VDD VDD pmos_rvt w=162.00n l=20n nfin=6
+.ENDS
+***************************************
+.SUBCKT INVx3_ASAP7_75t_R VSS VDD A Y
+MM0 Y A VSS VSS nmos_rvt w=243.00n l=20n nfin=9
+MM1 Y A VDD VDD pmos_rvt w=243.00n l=20n nfin=9
+.ENDS
+***************************************
+.SUBCKT INVx8_ASAP7_75t_R VSS VDD A Y
+MM0 Y A VSS VSS nmos_rvt w=648.00n l=20n nfin=24
+MM1 Y A VDD VDD pmos_rvt w=648.00n l=20n nfin=24
+.ENDS
+***************************************
+.SUBCKT INVx13_ASAP7_75t_R VSS VDD A Y
+MM0 Y A VSS VSS nmos_rvt w=1.053u l=20n nfin=39
+MM1 Y A VDD VDD pmos_rvt w=1.053u l=20n nfin=39
+.ENDS
+***************************************
+.SUBCKT INVx1_ASAP7_75t_R VSS VDD A Y
+MM0 Y A VSS VSS nmos_rvt w=81.0n l=20n nfin=3
+MM1 Y A VDD VDD pmos_rvt w=81.0n l=20n nfin=3
+.ENDS
+***************************************
+.SUBCKT DECAPx4_ASAP7_75t_R VSS VDD
+MM2 net011 net012 VSS VSS nmos_rvt w=324.00n l=20n nfin=12
+MM1 net012 net011 VDD VDD pmos_rvt w=324.00n l=20n nfin=12
+.ENDS
+***************************************
+.SUBCKT DECAPx1_ASAP7_75t_R VSS VDD
+MM2 net5 net6 VSS VSS nmos_rvt w=81.0n l=20n nfin=3
+MM1 net6 net5 VDD VDD pmos_rvt w=81.0n l=20n nfin=3
+.ENDS
+***************************************
+.SUBCKT IOCELLBUFANTENNAOUT VSS VDD in out w1 w3 w2
+X45 VSS VDD out ANTENNA_ASAP7_75t_R
+X46 VSS VDD out ANTENNA_ASAP7_75t_R
+X47 VSS VDD DECAPx2_ASAP7_75t_R
+X48 VSS VDD w1 w2 INVx3_ASAP7_75t_R
+X49 VSS VDD w2 w3 INVx8_ASAP7_75t_R
+X50 VSS VDD w3 out INVx13_ASAP7_75t_R
+X51 VSS VDD in w1 INVx1_ASAP7_75t_R
+X52 VSS VDD DECAPx4_ASAP7_75t_R
+X53 VSS VDD DECAPx1_ASAP7_75t_R
+.ENDS
+***************************************
